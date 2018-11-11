@@ -3,7 +3,6 @@ import { View, FlatList, Image } from 'react-native';
 import { ListItem, Avatar } from 'react-native-elements';
 import {DISHES} from '../shared/dishes';
 
-//function Menu(props) {
 class Menu extends Component {
 
     constructor(props){

@@ -11,7 +11,7 @@ function Menu(props) {
                 key={index}
                 title={item.name}                    
                 subtitle={item.description}                
-                avatar={<Image style={{borderRadius:50, height:50, width:50}} source={require('./images/uthappizza.png')}/>}
+                avatar={<Image style={{borderRadius:50, height:30, width:30}} source={require('./images/uthappizza.png')}/>}
                   />
         );
     };

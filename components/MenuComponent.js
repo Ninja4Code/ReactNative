@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, FlatList } from 'react-native';
+import { View, FlatList, Image } from 'react-native';
 import { ListItem, Avatar } from 'react-native-elements';
 
 function Menu(props) {

@@ -7,12 +7,14 @@ function Menu(props) {
     const renderMenuItem = ({item, index}) => {
 
         return (
-                <ListItem
+            <ListItem
                 key={index}
                 title={item.name}                    
-                subtitle={item.description}                
-               avatar={<Image resizeMode='cover' borderRadius={15} style={{ height:30, width:30}} source={require('./images/uthappizza.png')}/>}
-                  />
+                subtitle={item.description}  
+                onPress={() => props.onPress(item.id)}              
+                avatar={<Image resizeMode='cover' borderRadius={15} 
+                style={{ height:30, width:30}} source={require('./images/uthappizza.png')}/>}
+            />
         );
     };
 

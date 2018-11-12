@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { Text } from 'react-native';
 import { Card } from 'react-native-elements';
 
-class  Contact extends Component { 
+class  ContactComponent extends Component { 
     constructor(props) {
         super(props);
         
@@ -35,4 +35,4 @@ class  Contact extends Component {
     ); 
     }       
 }
-export default Contact;
+export default ContactComponent;

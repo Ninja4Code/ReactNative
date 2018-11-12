@@ -47,20 +47,13 @@ const MainNavigator = createDrawerNavigator({
         drawerLabel: 'Home'
       }
     },
-  Menu: 
-    { screen: MenuNavigator,
+  About: 
+    { screen: AboutNavigator,
       navigationOptions: {
-        title: 'Menu',
-        drawerLabel: 'Menu'
+        title: 'About',
+        drawerLabel: 'About'
       }, 
     },
-    Contact: 
-    { screen: ContactNavigator,
-      navigationOptions: {
-        title: 'Contact',
-        drawerLabel: 'Contact'
-      }, 
-    }
 }, {
 drawerBackgroundColor: '#D1C4E9'
 });

@@ -1,8 +1,12 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { Text } from 'react-native';
 import { Card } from 'react-native-elements';
 
-function Contact(props) {    
+class  Contact extends Component { 
+    static navigationOptions = {
+        title: 'Contact'
+    };
+    render(){   
     return(
         <Card title="Contact Information">      
             <Text style={{margin: 10}}>
@@ -24,6 +28,7 @@ function Contact(props) {
             Email:confusion@food.net
             </Text>
         </Card>
-    );        
+    ); 
+    }       
 }
 export default Contact;

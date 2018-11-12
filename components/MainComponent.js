@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { View, Platform } from 'react-native';
 import { createStackNavigator,createDrawerNavigator  } from 'react-navigation';
-import  Menu  from './Menucomponent';
-import Dishdetail from './dishdetailcomponet';
+import  Menu  from './MenuComponent';
+import Dishdetail from './DishdetailComponent';
 import Home from './HomeComponent';
-import { Icon } from 'react-native-elements';
 import Contact from './ContactUs';
-import About from './About Us';
+import About from './About-Us';
 
 
 const AboutNavigator = createStackNavigator({

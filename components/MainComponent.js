@@ -38,26 +38,6 @@ const HomeNavigator = createStackNavigator({
     headerTintColor: "#fff"  
   })
 });
-
-const MainNavigator = createDrawerNavigator({
-  Home: 
-    { screen: HomeNavigator,
-      navigationOptions: {
-        title: 'Home',
-        drawerLabel: 'Home'
-      }
-    },
-  Menu: 
-    { screen: MenuNavigator,
-      navigationOptions: {
-        title: 'Menu',
-        drawerLabel: 'Menu'
-      }, 
-    },
-}, {
-drawerBackgroundColor: '#D1C4E9'
-});
-
 const AboutNavigator = createStackNavigator({
   About: { screen: About }
 }, {
@@ -85,14 +65,49 @@ const ContactNavigator = createStackNavigator({
   })
 });
 
+const MainNavigator = createDrawerNavigator({
+  Home: 
+    { screen: HomeNavigator,
+      navigationOptions: {
+        title: 'Home',
+        drawerLabel: 'Home'
+      }
+    },
+  Menu: 
+    { screen: MenuNavigator,
+      navigationOptions: {
+        title: 'Menu',
+        drawerLabel: 'Menu'
+      }, 
+    },  
+  About: 
+    { screen: AboutNavigator,
+      navigationOptions: {
+        title: 'About',
+        drawerLabel: 'About'
+      }, 
+    },   
+  Contact: 
+    { screen: ContactNavigator,
+      navigationOptions: {
+        title: 'Contact',
+        drawerLabel: 'Contact'
+      }, 
+    },
+}, {
+drawerBackgroundColor: '#D1C4E9'
+});
 
-class Main extends Component {
+
+
+
+class MainComponent extends Component {
    render() { 
     return (
       <View style={{flex:1, paddingTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight }}>
-        <About />
+        <MainNavigator />
       </View>
     );
   }
 }  
-export default Main;
+export default MainComponent;

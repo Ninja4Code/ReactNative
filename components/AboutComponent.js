@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
-import { Card } from 'react-native-elements';
+import { Text, View, FlatList, Image } from 'react-native';
+import { Card, ListItem, Avatar } from 'react-native-elements';
 import { LEADERS } from '../shared/leaders';
 
 function History (props) {    
@@ -20,7 +20,7 @@ function History (props) {
         </Card>
     );        
 }
-class About extends Component {
+class AboutComponent extends Component {
     constructor(props){
         super(props);
         this.state = {
@@ -42,7 +42,7 @@ class About extends Component {
                     />
             );
         };
-        const {navigate} = this.props.navigation;
+        //const {navigate} = this.props.navigation;
         return (
             <View>
                 <History />
@@ -58,4 +58,4 @@ class About extends Component {
         );       
     }
 }
-export default About;
+export default AboutComponent;

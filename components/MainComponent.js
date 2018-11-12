@@ -6,7 +6,7 @@ import Dishdetail from './DishdetailComponent';
 import Home from './HomeComponent';
 import Contact from './ContactComponent';
 import About from './AboutComponent';
-
+import { Icon } from 'react-native-elements';
 
 const AboutNavigator = createStackNavigator({
  About:{ screen:About }

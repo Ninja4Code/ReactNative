@@ -28,7 +28,7 @@ class About extends Component {
         }
     }
     static navigationOptions = {
-        title: 'About Us'
+        title: 'About'
     };
     render() {        
         const renderMenuItem = ({item, index}) => {

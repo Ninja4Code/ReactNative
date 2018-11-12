@@ -47,11 +47,11 @@ const MainNavigator = createDrawerNavigator({
         drawerLabel: 'Home'
       }
     },
-  About: 
-    { screen: AboutNavigator,
+  Menu: 
+    { screen: MenuNavigator,
       navigationOptions: {
-        title: 'About',
-        drawerLabel: 'About'
+        title: 'Menu',
+        drawerLabel: 'Menu'
       }, 
     },
 }, {

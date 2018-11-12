@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { View, FlatList,ScrollView,Text } from 'react-native';
+import { Image, FlatList,ScrollView,Text } from 'react-native';
 import { ListItem } from 'react-native-elements';
 import { LEADERS } from '../shared/leaders';
 import { Card } from 'react-native-elements';
@@ -25,7 +25,7 @@ function Renderleader({item, index})  {
                     title={item.name}
                     subtitle={item.description}
                     hideChevron={true}
-                    leftAvatar={{ source: require('./images/alberto.png')}}
+                    avatar={<Image resizeMode='cover' borderRadius={15} style={{ height:30, width:30}} source={require('./images/alberto.png')}/>}
                   />
                 
         );

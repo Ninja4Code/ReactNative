@@ -3,7 +3,7 @@ import {Text,View } from 'react-native';
 import { Card } from 'react-native-elements';
 
 
-function RenderContect(){
+function RenderContact(){
     return(
     <Card
     title='Contact-Information'>
@@ -31,21 +31,19 @@ function RenderContect(){
     );
 }
 
-class Contact extends Component{
-constructor(props){
+class Contact extends Component {
+  constructor(props){
     super(props);   
-}
-static navigationOptions = {
+  }
+  static navigationOptions = {
     title: 'Contact-Us'
-};
-render(){
+  };
+  render(){
     return(
-<View>
-    <RenderContect/>
-</View>   
+      <View>
+         <RenderContact/>
+      </View>   
     )
 }
-
 }
-
-export default Contact
+export default Contact;

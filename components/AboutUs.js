@@ -4,7 +4,7 @@ import { ListItem } from 'react-native-elements';
 import { LEADERS } from '../shared/leaders';
 import { Card } from 'react-native-elements';
 
-function Renderhistory(){
+function History(){
     return(
         <Card
         title='Our History'>
@@ -44,24 +44,19 @@ static navigationOptions ={
     title:"About Us"
     };
 
-render(){
-    
+render(){    
     return(
       <ScrollView>
-          <Renderhistory/>
+          <History/>
           <Card  title = 'Corporate LeaderShip'>
-          <FlatList 
+            <FlatList 
                     data={this.state.leaders}
                     renderItem={Renderleader}
                     keyExtractor={item => item.id.toString()}
-                    />
-                    </Card>
+            />
+          </Card>
       </ScrollView>
-    )
-    
-    
+    )   
 }
-
 }
-
-export default About
+export default About;

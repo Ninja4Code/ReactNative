@@ -1,16 +1,24 @@
 import React, {Component} from 'react';
 import { View, FlatList, Image } from 'react-native';
-import { ListItem, Avatar } from 'react-native-elements';
-import {DISHES} from '../shared/dishes';
+import { Tile, ListItem, Avatar } from 'react-native-elements';
+//import {DISHES} from '../shared/dishes';
+import { connect } from 'react-redux';
+import { baseUrl } from '../shared/baseUrl';
+
+const mapStateToProps = state => {
+    return {
+        dishes: state.dishes
+    }
+}
 
 class Menu extends Component {
 
-    constructor(props){
+    /*constructor(props){
         super(props);
         this.state = {
             dishes: DISHES
         }
-    }
+    }*/
     static navigationOptions = {
         title: 'Menu'
     };    
@@ -18,24 +26,26 @@ class Menu extends Component {
         const renderMenuItem = ({item, index}) => {
 
             return (
-                    <ListItem
+                <Tile
                     key={index}
                     title={item.name}                    
-                    subtitle={item.description}   
-                    onPress ={()=> navigate('Dishdetail', {dishId:item.id})}             
-                   avatar={<Image resizeMode='cover' borderRadius={15} style={{ height:30, width:30}} source={require('./images/uthappizza.png')}/>}
-                      />
+                    caption={item.description}  
+                    featured 
+                    onPress ={()=> navigate('Dishdetail', {dishId:item.id})} 
+                    imageSrc={{uri:baseUrl + item.image}}            
+                    {/*avatar={<Image resizeMode='cover' borderRadius={15} style={{ height:30, width:30}} source={require('./images/uthappizza.png')}/>}*/}
+                />
             );
         };
         const {navigate} = this.props.navigation;
         return (
             <FlatList 
                 style={{marginTop:25}}
-                data={this.state.dishes}
+                data={this.props.dishes.dishes}
                 renderItem={renderMenuItem}
                 keyExtractor={item => item.id.toString()}
-                />
+            />
        );
     }    
 }
-export default Menu;
+export default connect(mapStateToProps)(Menu);

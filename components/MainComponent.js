@@ -8,7 +8,7 @@ import Contact from './ContactComponent';
 import About from './AboutComponent';
 import { Icon } from 'react-native-elements';
 import { connect } from 'react-redux';
-import { fetchLeaders } from '../redux/ActionCreators';
+import { fetchDishes, fetchComments, fetchPromos, fetchLeaders } from '../redux/ActionCreators';
 
 const mapStateToProps = state => {
   return {
@@ -16,7 +16,10 @@ const mapStateToProps = state => {
   }
 }
 const mapDispatchToProps = dispatch => ({
-   fetchLeaders:() => dispatch(fetchLeaders())
+   fetchLeaders:() => dispatch(fetchLeaders()),
+   fetchDishes:() => dispatch(fetchDishes()),
+   fetchPromos:() => dispatch(fetchPromos()),
+   fetchComments:() => dispatch(fetchComments())
 });
 
 const AboutNavigator = createStackNavigator({
@@ -177,6 +180,9 @@ Contact:
 class Main extends Component {
   componentDidMount() {
     this.props.fetchLeaders();
+    this.props.fetchComments();
+    this.props.fetchDishes();
+    this.props.fetchPromos();
   }
   render() {
     return (       

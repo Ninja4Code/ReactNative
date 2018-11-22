@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { Image, FlatList,ScrollView,Text } from 'react-native';
 import { ListItem } from 'react-native-elements';
-import { LEADERS } from '../shared/leaders';
+//import { LEADERS } from '../shared/leaders';
 import { Card } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { baseUrl } from '../shared/baseUrl';

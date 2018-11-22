@@ -7,6 +7,17 @@ import Home from './HomeComponent';
 import Contact from './ContactComponent';
 import About from './AboutComponent';
 import { Icon } from 'react-native-elements';
+import { connect } from 'react-redux';
+import { fetchLeaders } from '../redux/ActionCreators';
+
+const mapStateToProps = state => {
+  return {
+      
+  }
+}
+const mapDispatchToProps = dispatch => ({
+   fetchLeaders:() => dispatch(fetchLeaders())
+});
 
 const AboutNavigator = createStackNavigator({
  About:{ screen:About }
@@ -164,6 +175,9 @@ Contact:
   contentComponent: CustomDrawerContentComponent
 });
 class Main extends Component {
+  componentDidMount() {
+    this.props.fetchLeaders();
+  }
   render() {
     return (       
       <View style={{flex:1, paddingTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight }}>
@@ -196,4 +210,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Main;
+export default connect(mapStateToProps,mapDispatchToProps)(Main);

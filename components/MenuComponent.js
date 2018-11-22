@@ -32,7 +32,7 @@ class Menu extends Component {
                     caption={item.description}  
                     featured 
                     onPress ={()=> navigate('Dishdetail', {dishId:item.id})} 
-                    imageSrc={{uri:baseUrl + item.image}}            
+                    imageSrc={require(item.image)}            
                     {/*avatar={<Image resizeMode='cover' borderRadius={15} style={{ height:30, width:30}} source={require('./images/uthappizza.png')}/>}*/}
                 />
             );

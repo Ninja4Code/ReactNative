@@ -21,7 +21,7 @@ function RenderDish(props) {
             return(
                 <Card
                 featuredTitle={dish.name}
-                image={require('./images/uthappizza.png')}>
+                image={require(dish.image)}>
                     <Text style={{margin: 10}}>
                         {dish.description}
                     </Text>

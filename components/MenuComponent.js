@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import { View, FlatList, Image } from 'react-native';
 import { Tile, ListItem, Avatar } from 'react-native-elements';
-//import {DISHES} from '../shared/dishes';
 import { connect } from 'react-redux';
 import { baseUrl } from '../shared/baseUrl';
 
@@ -10,15 +9,8 @@ const mapStateToProps = state => {
         dishes: state.dishes
     }
 }
-
 class Menu extends Component {
 
-    /*constructor(props){
-        super(props);
-        this.state = {
-            dishes: DISHES
-        }
-    }*/
     static navigationOptions = {
         title: 'Menu'
     };    

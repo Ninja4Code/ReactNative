@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import { Image, FlatList,ScrollView,Text } from 'react-native';
 import { ListItem } from 'react-native-elements';
-//import { LEADERS } from '../shared/leaders';
 import { Card } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { baseUrl } from '../shared/baseUrl';
@@ -11,7 +10,6 @@ const mapStateToProps = state => {
         leaders: state.leaders
     }
 }
-
 function History(){
     return(
         <Card
@@ -40,30 +38,22 @@ function Renderleader({item, index})  {
 
 class About extends Component{
 
-/*constructor(props){
-    super(props);
-    this.state = {
-        leaders:LEADERS
+    static navigationOptions ={
+        title:"About Us"
     };
-  
-}*/
-static navigationOptions ={
-    title:"About Us"
-    };
-
-render(){    
-    return(
-      <ScrollView>
-          <History/>
-          <Card  title = 'Corporate LeaderShip'>
-            <FlatList 
+    render(){    
+        return(
+        <ScrollView>
+            <History/>
+            <Card  title = 'Corporate LeaderShip'>
+                <FlatList 
                     data={this.props.leaders.leaders}
                     renderItem={Renderleader}
                     keyExtractor={item => item.id.toString()}
-            />
-          </Card>
-      </ScrollView>
-    )   
-}
+                />
+            </Card>
+        </ScrollView>
+        )   
+    }
 }
 export default connect(mapStateToProps)(About);

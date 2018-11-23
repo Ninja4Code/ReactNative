@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import { ScrollView, View, Text } from 'react-native';
 import { Card } from 'react-native-elements';
-//import { DISHES } from '../shared/dishes';
-//import { PROMOTIONS } from '../shared/promotions';
-//import { LEADERS } from '../shared/leaders';
 import { connect } from 'react-redux';
 import { baseUrl } from '../shared/baseUrl';
 
@@ -19,14 +16,15 @@ function RenderItem(props) {
     const item = props.item;
     
     if (item != null) {
-        return(
+        return (
             <Card
                 featuredTitle={item.name}
                 featuredSubtitle={item.designation}
                 image={{uri: baseUrl + item.image}}>
                 <Text
                     style={{margin: 10}}>
-                    {item.description}</Text>
+                    {item.description}
+                </Text>
             </Card>
         );
     }
@@ -34,23 +32,13 @@ function RenderItem(props) {
         return(<View></View>);
     }
 }
-
 class Home extends Component {
-   /* constructor(props) {
-        super(props);
-        this.state = {
-          dishes: DISHES,
-          promotions: PROMOTIONS,
-          leaders: LEADERS
-        };
-    }*/
-
+   
     static navigationOptions = {
         title: 'Home'
     };
-
     render() {
-        return(
+        return (
             <ScrollView>
                 <RenderItem item={this.props.dishes.dishes.filter((dish) => dish.featured)[0]} />
                 <RenderItem item={this.props.promotions.promotions.filter((promo) => promo.featured)[0]} />
@@ -59,5 +47,4 @@ class Home extends Component {
         );
     }
 }
-
 export default connect(mapStateToProps)(Home);

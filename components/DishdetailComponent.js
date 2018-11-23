@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View, ScrollView, FlatList } from 'react-native';
 import { Card, Icon } from 'react-native-elements';
-//import { DISHES } from '../shared/dishes';
-//import { COMMENTS } from '../shared/comments';
 import { connect } from 'react-redux';
 import { baseUrl } from '../shared/baseUrl';
 
@@ -12,32 +10,31 @@ const mapStateToProps = state => {
         comments: state.comments
     }
 }
-
 function RenderDish(props) {
 
     const dish = props.dish;
     
         if (dish != null) {
-            return(
+            return (
                 <Card
-                featuredTitle={dish.name}
-                image={{url:baseUrl + dish.image}}>
+                    featuredTitle={dish.name}
+                    image={{uri:baseUrl + dish.image}}>
                     <Text style={{margin: 10}}>
                         {dish.description}
                     </Text>
                     <Icon
-                    raised
-                    reverse
-                    name={ props.favorite ? 'heart' : 'heart-o'}
-                    type='font-awesome'
-                    color='#f50'
-                    onPress={() => props.favorite ? console.log('Already favorite') : props.onPress()}
+                        raised
+                        reverse
+                        name={ props.favorite ? 'heart' : 'heart-o'}
+                        type='font-awesome'
+                        color='#f50'
+                        onPress={() => props.favorite ? console.log('Already favorite') : props.onPress()}
                     />
                 </Card>
             );
         }
         else {
-            return(<View></View>);
+            return (<View></View>);
         }
 }
 function RenderComments(props) {
@@ -68,8 +65,6 @@ class Dishdetail extends Component {
     constructor(props){
         super(props);
         this.state = {
-            //dishes: DISHES,
-            //comments: COMMENTS,
             favorites:[]
         }
     }
@@ -92,5 +87,4 @@ class Dishdetail extends Component {
         );
     }   
 }
-
 export default connect(mapStateToProps)(Dishdetail);

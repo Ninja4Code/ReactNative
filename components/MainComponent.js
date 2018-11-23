@@ -11,8 +11,7 @@ import { connect } from 'react-redux';
 import { fetchDishes, fetchComments, fetchPromos, fetchLeaders } from '../redux/ActionCreators';
 
 const mapStateToProps = state => {
-  return {
-      
+  return {      
   }
 }
 const mapDispatchToProps = dispatch => ({
@@ -21,7 +20,6 @@ const mapDispatchToProps = dispatch => ({
    fetchPromos:() => dispatch(fetchPromos()),
    fetchComments:() => dispatch(fetchComments())
 });
-
 const AboutNavigator = createStackNavigator({
  About:{ screen:About }
 },{
@@ -215,5 +213,4 @@ const styles = StyleSheet.create({
     height: 60
   }
 });
-
 export default connect(mapStateToProps,mapDispatchToProps)(Main);

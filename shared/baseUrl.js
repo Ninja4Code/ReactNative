@@ -1,2 +1,2 @@
-//export const baseUrl = 'http://192.168.1.8:3001/'
-export const baseUrl = 'www.excellorsoftware.com/Images/';
+//export const baseUrl = 'http://localhost:3001/'
+export const baseUrl = 'http://www.excellorsoftware.com/Images/';

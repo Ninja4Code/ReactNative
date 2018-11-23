@@ -16,23 +16,7 @@ function RenderItem(props) {
     
     const item = props.item;
     
-   {/* if (item != null) {
-        return (
-            <Card
-                featuredTitle={item.name}
-                featuredSubtitle={item.designation}
-                image={{uri: baseUrl + item.image}}>
-                <Text
-                    style={{margin: 10}}>
-                    {item.description}
-                </Text>
-            </Card>
-        );
-    }
-    else {
-        return(<View></View>);
-    }*/}
-    if (props.isLoading) {
+   if (props.isLoading) {
         return(
                 <Loading />
         );

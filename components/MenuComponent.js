@@ -30,14 +30,6 @@ class Menu extends Component {
             );
         };
         const {navigate} = this.props.navigation;
-        {/*return (
-            <FlatList 
-                style={{marginTop:25}}
-                data={this.props.dishes.dishes}
-                renderItem={renderMenuItem}
-                keyExtractor={item => item.id.toString()}
-            />            
-        );*/}
         if (this.props.dishes.isLoading) {
             return(
                 <Loading />

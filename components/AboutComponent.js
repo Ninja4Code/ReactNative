@@ -26,16 +26,15 @@ function History(){
     )
 }
 function Renderleader({item, index})  {
-        return (
-           
-                <ListItem
-                    key={index}
-                    title={item.name}
-                    subtitle={item.description}
-                    hideChevron={true}
-                    avatar={<Image resizeMode='cover' borderRadius={15} style={{ height:30, width:30}} source={require(item.image)}/>}
-                  />
-                
+        return (           
+            <ListItem
+                key={index}
+                title={item.name}
+                subtitle={item.description}
+                hideChevron={true}
+                avatar={<Image resizeMode='cover' borderRadius={15} style={{ height:30, width:30}} 
+                    source={{uri: baseUrl + item.image}}/>}
+            />                
         );
     };
 

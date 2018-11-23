@@ -21,7 +21,7 @@ function RenderDish(props) {
             return(
                 <Card
                 featuredTitle={dish.name}
-                image={require(dish.image)}>
+                image={{url:baseUrl + dish.image}}>
                     <Text style={{margin: 10}}>
                         {dish.description}
                     </Text>

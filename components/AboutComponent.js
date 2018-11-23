@@ -24,7 +24,7 @@ function History(){
         </Card>
     )
 }
-function Renderleader({item, index})  {
+function renderLeader({item, index})  {
         return (           
             <ListItem
                 key={index}
@@ -35,8 +35,7 @@ function Renderleader({item, index})  {
                     source={{uri: baseUrl + item.image}}/>}
             />                
         );
-    };
-
+}
 class About extends Component{
 
     static navigationOptions = {

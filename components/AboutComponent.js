@@ -43,19 +43,7 @@ class About extends Component{
         title:"About Us"
     };
     render(){    
-       {/* return(
-        <ScrollView>
-            <History/>
-            <Card  title = 'Corporate LeaderShip'>
-                <FlatList 
-                    data={this.props.leaders.leaders}
-                    renderItem={Renderleader}
-                    keyExtractor={item => item.id.toString()}
-                />
-            </Card>
-        </ScrollView>
-       )  */}
-       if (this.props.leaders.isLoading) {
+        if (this.props.leaders.isLoading) {
         return(
             <ScrollView>
                 <History />

@@ -6,6 +6,7 @@ import Dishdetail from './DishdetailComponent';
 import Home from './HomeComponent';
 import Contact from './ContactComponent';
 import About from './AboutComponent';
+import Reservation from './ReservationComponent';
 import { Icon } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { fetchDishes, fetchComments, fetchPromos, fetchLeaders } from '../redux/ActionCreators';
@@ -20,6 +21,22 @@ const mapDispatchToProps = dispatch => ({
    fetchPromos:() => dispatch(fetchPromos()),
    fetchComments:() => dispatch(fetchComments())
 });
+const ReservationNavigator = createStackNavigator({
+  Reservation: { screen: Reservation }
+}, {
+  navigationOptions: ({ navigation }) => ({
+    headerStyle: {
+        backgroundColor: "#512DA8"
+    },
+    headerTitleStyle: {
+        color: "#fff"            
+    },
+    headerTintColor: "#fff",
+    headerLeft: <Icon name="menu" size={24}
+      iconStyle={{ color: 'white' }} 
+      onPress={ () => navigation.navigate('DrawerToggle') } />    
+  })
+})
 const AboutNavigator = createStackNavigator({
  About:{ screen:About }
 },{
@@ -122,22 +139,21 @@ const MainNavigator = createDrawerNavigator({
         )
       }
     },
-    About:
-{
-  screen: AboutNavigator,
-  navigationOptions: {
-    title: 'About Us',
-    drawerLabel: 'About Us',
-    drawerIcon:({tintColor}) => (
-      <Icon
+  About:
+    { screen: AboutNavigator,
+      navigationOptions: {
+        title: 'About Us',
+        drawerLabel: 'About Us',
+        drawerIcon:({tintColor}) => (
+        <Icon
          name='info-circle'
          type='font-awesome'
          size={24}
          color={tintColor}
-      />
-    )
-  }
-},
+        />
+      )
+    }
+  },
   Menu: 
     { screen: MenuNavigator,
       navigationOptions: {
@@ -151,27 +167,40 @@ const MainNavigator = createDrawerNavigator({
              color={tintColor}
           />
         )
+    }
+  },
+  Reservation:
+  { screen: ReservationNavigator,
+    navigationOptions: {
+      title: 'Reserve Table',
+      drawerLabel: 'Reserve Table',
+      drawerIcon: ({ tintColor, focused }) => (
+        <Icon
+          name='cutlery'
+          type='font-awesome'            
+          size={24}
+          iconStyle={{ color: tintColor }}
+        />
+      ),
+    }
+  },
+  Contact:
+    { screen: ContactNavigator,
+      navigationOptions: {
+        title: 'Contact Us',
+        drawerLabel: 'Contact Us',
+        drawerIcon:({tintColor}) => (
+          <Icon
+            name='address-card'
+            type='font-awesome'
+            size={22}
+            color={tintColor}
+          />
+        )
       }
-    },
-
-Contact:
-{ screen: ContactNavigator,
-  navigationOptions: {
-    title: 'Contact Us',
-    drawerLabel: 'Contact Us',
-    drawerIcon:({tintColor}) => (
-      <Icon
-         name='address-card'
-         type='font-awesome'
-         size={22}
-         color={tintColor}
-      />
-    )
-  }
-}
-
-
-}, {
+    }
+  }, 
+  {
   drawerBackgroundColor: '#D1C4E9',
   contentComponent: CustomDrawerContentComponent
 });

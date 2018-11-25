@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-//import { Text, View, ScrollView, StyleSheet, Picker, Switch, Button } from 'react-native';
-import { Text, View, StyleSheet, Picker, Switch, Button, Modal } from 'react-native';
-import { Card } from 'react-native-elements';
+import { Text, View, ScrollView, StyleSheet, Picker, Switch, Button, Modal } from 'react-native';
 import DatePicker from 'react-native-datepicker'
 
 class Reservation extends Component {
@@ -33,17 +31,7 @@ class Reservation extends Component {
     }
     static navigationOptions = {
         title: 'Reserve Table',
-    };
-
-    handleReservation() {
-        console.log(JSON.stringify(this.state));
-        this.setState({
-            guests: 1,
-            smoking: false,
-            date: ''
-        });
-    }
-    
+    };    
     render() {
         return(
             <ScrollView>

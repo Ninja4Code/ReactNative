@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, ScrollView, FlatList, Modal, Button, StyleSheet } from 'react-native';
-import { Card, Icon, Input, Rating } from 'react-native-elements';
+import { Card, Icon, FormInput, Rating } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { baseUrl } from '../shared/baseUrl';
 import { postFavorite, postComment } from '../redux/ActionCreators';
@@ -108,7 +108,7 @@ class DishDetail extends Component {
         this.setState({showModal: !this.state.showModal});
     }
     handleRating(rating) {
-        this.setState({ rating }) 
+        this.setState({ rating: rating }) 
     }
 
     handleComment(dishId, rating, author, comment) {
@@ -135,7 +135,6 @@ class DishDetail extends Component {
                     animationType={"slide"}
                     transparent={false}
                     visible={this.state.showModal}
-                    onDismiss={ () => this.toggleModal() }
                     onRequestClose={ () => this.toggleModal() }
                     >
                     <View style={{ justifyContent: 'center',margin: 10}}>
@@ -148,15 +147,15 @@ class DishDetail extends Component {
                             style={{ paddingVertical: 10 }}
                             onFinishRating={ this.handleRating }
                         />
-                        <Input
+                        <FormInput
                             placeholder="Author"
                             leftIcon={{ type: 'font-awesome', name: 'user-o' }}
-                            onChangeText={ author => this.setState({ author })}
+                            onChangeText={ author => this.setState({ author: author })}
                         />
-                        <Input
+                        <FormInput
                             placeholder="Comment"
                             leftIcon={{ type: 'font-awesome', name: 'comment-o' }}
-                            onChangeText={ comment => this.setState({ comment })}
+                            onChangeText={ comment => this.setState({ comment: comment })}
                         />
                         <View style={{ marginBottom: 20, marginTop: 20}}>
                             <Button

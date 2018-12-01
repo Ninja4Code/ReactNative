@@ -152,11 +152,14 @@ export const postComment = (dishId, rating, author, comment) => (dispatch) => {
     
     return fetch(appUrl + 'AddComment', {
         method: "POST",
-        body: JSON.stringify(newComment),
-        headers: {
+        //body: JSON.stringify(newComment),
+        body: "dishId=0&rating=5&author=John&comment=great", 
+        /*headers: {
           "Content-Type": "application/json"
         },
-        credentials: "same-origin"
+        credentials: "same-origin"*/
+        
+        headers: {'Content-Type':'application/x-www-form-urlencoded'}
     })
     .then(response => {
         if (response.ok) {

@@ -1,8 +1,8 @@
 import * as ActionTypes from './ActionTypes';
-import { baseUrl } from '../shared/baseUrl';
+import { appUrl } from '../shared/baseUrl';
 
 export const fetchComments = () => (dispatch) => {
-    return fetch(baseUrl + 'comments')
+    return fetch(appUrl + 'Comments')
     .then(response => {
         if (response.ok) {
           return response;
@@ -32,7 +32,7 @@ export const fetchDishes = () => (dispatch) => {
 
     dispatch(dishesLoading());
 
-    return fetch(baseUrl + 'dishes')
+    return fetch(appUrl + 'Dishes')
     .then(response => {
         if (response.ok) {
           return response;
@@ -65,7 +65,7 @@ export const fetchPromos = () => (dispatch) => {
     
     dispatch(promosLoading());
 
-    return fetch(baseUrl + 'promotions')
+    return fetch(appUrl + 'Promotions')
     .then(response => {
         if (response.ok) {
             return response;
@@ -98,7 +98,7 @@ export const fetchLeaders = () => (dispatch) => {
     
     dispatch(leadersLoading());
 
-    return fetch(baseUrl + 'leaders')
+    return fetch(appUrl + 'Leaders')
     .then(response => {
         if (response.ok) {
             return response;
@@ -150,7 +150,7 @@ export const postComment = (dishId, rating, author, comment) => (dispatch) => {
     };
     newComment.date = new Date().toISOString();
     
-    return fetch(baseUrl + 'comments', {
+    return fetch(appUrl + 'AddComment', {
         method: "POST",
         body: JSON.stringify(newComment),
         headers: {

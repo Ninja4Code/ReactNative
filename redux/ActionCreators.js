@@ -153,7 +153,8 @@ export const postComment = (dishId, rating, author, comment) => (dispatch) => {
     return fetch(appUrl + 'AddComment', {
         method: "POST",
         //body: JSON.stringify(newComment),
-        body: "dishId=0&rating=5&author=Johnsons&comment=greatness", 
+       // body: "dishId=0&rating=5&author=Johnsons&comment=greatness", 
+        body: `dishId=${dishId}&rating=${rating}&author=${author}&comment=${comment}`,
         /*headers: {
           "Content-Type": "application/json"
         },

@@ -26,13 +26,7 @@ class Favorites extends Component {
         const { navigate } = this.props.navigation; 
             
         const renderMenuItem = ({item, index}) => {
-            const rightButton = [
-                {
-                    text: 'Delete', 
-                    type: 'delete',
-                    onPress: () => this.props.deleteFavorite(item.id)
-                }
-            ]; 
+            
             const rightButton = [
                 {
                     text: 'Delete', 

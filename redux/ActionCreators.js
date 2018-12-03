@@ -153,7 +153,6 @@ export const postComment = (dishId, rating, author, comment) => (dispatch) => {
     return fetch(appUrl + 'AddComment', {
         method: "POST",
         //body: JSON.stringify(newComment),
-       // body: "dishId=0&rating=5&author=Johnsons&comment=greatness", 
         body: `dishId=${dishId}&rating=${rating}&author=${author}&comment=${comment}`,
         /*headers: {
           "Content-Type": "application/json"
@@ -180,3 +179,7 @@ export const postComment = (dishId, rating, author, comment) => (dispatch) => {
         }, 2000))
     .catch(error =>  { console.log('post comments', error.message); alert('Your comment could not be posted\nError: '+error.message); });
 };
+export const deleteFavorite = (dishId) => ({
+    type: ActionTypes.DELETE_FAVORITE,
+    payload: dishId
+});  

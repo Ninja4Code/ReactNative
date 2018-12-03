@@ -41,7 +41,8 @@ class Favorites extends Component {
                         subtitle={item.description}
                         hideChevron={true}
                         onPress={() => navigate('Dishdetail', { dishId: item.id })}
-                        leftAvatar={{ source: {uri: baseUrl + item.image}}}
+                        avatar={<Image resizeMode='cover' borderRadius={15} style={{ height:30, width:30}} 
+                            source={{uri: baseUrl + item.image}}/>}
                     />
                 </Swipeout>
             );

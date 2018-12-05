@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, ScrollView, StyleSheet, Picker, Switch, Button} from 'react-native';
+import { Text, View, StyleSheet, Picker, Switch, Button, Alert} from 'react-native';
 import DatePicker from 'react-native-datepicker';
 import * as Animatable from 'react-native-animatable';
 
@@ -15,20 +15,19 @@ class Reservation extends Component {
         }
     }   
     handleReservation() {
-       console.log(JSON.stringify(this.state));
-       
+       //console.log(JSON.stringify(this.state));       
        Alert.alert(
         'Your Reservation OK?',
-        `Number of Guests:${this.state.guests}\nSmoking?${this.state.smoking ? 'Yes' : 'No'}\nDate and time:${this.state.date}`
+        `Number of Guests:${this.state.guests}\nSmoking?${this.state.smoking ? 'Yes' : 'No'}\nDate and time:${this.state.date}`,
             [
                 { 
                     text: 'Cancel', 
-                    onPress: () => console.log('Cancel button pressed'),
+                    onPress: () => this.resetForm(),
                     style: ' cancel'
                 },
                 {
                     text: 'OK',
-                    onPress: () => console.log('OK button pressed')
+                    onPress: () => this.resetForm()
                 }
             ],
             { cancelable: false }
@@ -106,9 +105,7 @@ class Reservation extends Component {
             </Animatable.View>
         );
     }
-
 };
-
 const styles = StyleSheet.create({
     formRow: {
       alignItems: 'center',
@@ -123,23 +120,6 @@ const styles = StyleSheet.create({
     },
     formItem: {
         flex: 1
-    },
-    modal: {
-        justifyContent: 'center',
-        margin: 20
-     },
-     modalTitle: {
-         fontSize: 24,
-         fontWeight: 'bold',
-         backgroundColor: '#512DA8',
-         textAlign: 'center',
-         color: 'white',
-         marginBottom: 20
-     },
-     modalText: {
-         fontSize: 18,
-         margin: 10
-     }
+    ,}   
 });
-
 export default Reservation;

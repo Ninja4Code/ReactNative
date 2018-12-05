@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, ScrollView, FlatList, Modal, Button, StyleSheet, Alert, PanResponder } from 'react-native';
+import { View, Text, ScrollView, FlatList, Modal, Button, Alert, PanResponder } from 'react-native';
 import { Card, Icon, FormInput, Rating } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { baseUrl } from '../shared/baseUrl';
@@ -17,10 +17,9 @@ const mapDispatchToProps = dispatch => ({
     postFavorite: (dishId) => dispatch(postFavorite(dishId)),
     postComment: (dishId, rating, author, comment) => dispatch(postComment(dishId, rating, author, comment))
 })
-
 function RenderDish(props) {
     const dish = props.dish;
-    handleViewRef = ref => this.view = ref;
+    const handleViewRef = ref => this.view = ref;
 
     const recognizeDrag = ({ moveX, moveY, dx, dy }) => {
         if ( dx < -200 )
@@ -52,59 +51,54 @@ function RenderDish(props) {
                     {text: 'OK', onPress: () => {props.favorite ? console.log('Already favorite') : props.onPress()}},
                     ],
                     { cancelable: false }
-                );//end alert
+                );
                 return true;
-            }//end if recognizeDrag
-            else if (recognizeComment(gestureState)){
-                this.toggleModal();
             }
-        }//end onResponderEnd
-    })//end PanResponder.create
-    
-        if (dish != null) {
-            return(
-                <Animatable.View animation="fadeInDown" duration={2000} delay={1000} ref={this.handleViewRef} {...panResponder.panHandlers}>
-                    <Card
-                    featuredTitle={dish.name}
-                    image={{uri: baseUrl + dish.image}}>
-                        <Text style={{margin: 10}}>
-                            {dish.description}
-                        </Text>
-                        <View style={{display: 'flex', flexDirection: 'row', justifyContent: 'center'}}>
-                            <Icon
-                                raised
-                                reverse
-                                name={ props.favorite ? 'heart' : 'heart-o'}
-                                type='font-awesome'
-                                color='#f50'
-                                style={{flex: 1}}
-                                onPress={() => props.favorite ? console.log('Already favorite') : props.onPress()}
-                                />
-                            <Icon
-                                raised
-                                reverse
-                                name='pencil'
-                                type='font-awesome'
-                                color='#512da7'
-                                style={{flex: 1}}
-                                onPress={ () => props.toggleModal() }                        
-                                />
-                            </View>
-                    </Card>
-                </Animatable.View>
-            );
+            else if (recognizeComment(gestureState)){
+                props.toggleModal();
+            }
         }
-        else {
-            return(<View></View>);
-        }
+    })    
+    if (dish != null) {
+        return(
+            <Animatable.View animation="fadeInDown" duration={2000} delay={1000} ref={this.handleViewRef} {...panResponder.panHandlers}>
+                <Card
+                featuredTitle={dish.name}
+                image={{uri: baseUrl + dish.image}}>
+                    <Text style={{margin: 10}}>
+                        {dish.description}
+                    </Text>
+                    <View style={{display: 'flex', flexDirection: 'row', justifyContent: 'center'}}>
+                        <Icon
+                            raised
+                            reverse
+                            name={ props.favorite ? 'heart' : 'heart-o'}
+                            type='font-awesome'
+                            color='#f50'
+                            style={{flex: 1}}
+                            onPress={() => props.favorite ? console.log('Already favorite') : props.onPress()}
+                            />
+                        <Icon
+                            raised
+                            reverse
+                            name='pencil'
+                            type='font-awesome'
+                            color='#512da7'
+                            style={{flex: 1}}
+                            onPress={ () => props.toggleModal() }                        
+                            />
+                        </View>
+                </Card>
+            </Animatable.View>
+        );
+    }
+    else {
+        return(<View></View>);
+    }
 }
-
-function RenderComments(props) {
-
-    const comments = props.comments;
-            
-    const renderCommentItem = ({item, index}) => {
-        
+function RenderComments(props) {    
+    const comments = props.comments;            
+    const renderCommentItem = ({item, index}) => {        
         return (
                 <View key={index} style={{margin: 10}}>
                     <Text style={{fontSize: 14}}>{item.comment}</Text>
@@ -112,8 +106,7 @@ function RenderComments(props) {
                     <Text style={{fontSize: 12}}>{'-- ' + item.author + ', ' + item.date} </Text>
                 </View>
             );
-        };
-    
+    };    
     return (
         <Animatable.View animation="fadeInUp" duration={2000} delay={1000}>
             <Card title='Comments' >
@@ -127,7 +120,6 @@ function RenderComments(props) {
     );
 }
 class DishDetail extends Component {
-
     constructor(props) {
         super(props);
         this.state = {
@@ -141,27 +133,22 @@ class DishDetail extends Component {
         this.handleRating = this.handleRating.bind(this);
         this.handleComment = this.handleComment.bind(this);
     }
-
     markFavorite(dishId) {
         this.props.postFavorite(dishId);
     }
-
     toggleModal() {
         this.setState({showModal: !this.state.showModal});
     }
     handleRating(rating) {
         this.setState({ rating: rating }) 
     }
-
     handleComment(dishId, rating, author, comment) {
         this.props.postComment(dishId, rating, author, comment);
         this.toggleModal();
     }
-
     static navigationOptions = {
         title: 'Dish Details'
     };
-
     render() {
         const dishId = this.props.navigation.getParam('dishId','');
         return(
@@ -218,10 +205,8 @@ class DishDetail extends Component {
                         
                     </View>
                 </Modal>
-
             </ScrollView>   
         );
     }
 }
-
 export default connect(mapStateToProps, mapDispatchToProps)(DishDetail);

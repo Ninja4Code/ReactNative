@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView, Text, View } from 'react-native';
+import { ScrollView, Text, View} from 'react-native';
 import { Card } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { baseUrl } from '../shared/baseUrl';
@@ -24,7 +24,7 @@ function RenderItem(props) {
     else if (props.errMess) {
         return(
             <View> 
-                <Text>{props.erreMess}</Text>
+                <Text>{props.errMess}</Text>
             </View>
         );
     }
@@ -51,8 +51,9 @@ class Home extends Component {
         title: 'Home'
     };
     constructor(props) {
-        super(props);               
-    }      
+        super(props);
+             
+    }     
     render() {
         return (
             <ScrollView>                
@@ -70,7 +71,7 @@ class Home extends Component {
                     item={this.props.leaders.leaders.filter((leader) => leader.featured)[0]}
                     isLoading={this.props.leaders.isLoading}
                     errMess={this.props.leaders.errMess}  
-                />               
+                />                
             </ScrollView>
         );
     }

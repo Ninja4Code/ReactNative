@@ -22,10 +22,8 @@ class Favorites extends Component {
     static navigationOptions = {
         title: 'My Favorites'
     };
-
     render() {
-        const { navigate } = this.props.navigation; 
-            
+        const { navigate } = this.props.navigation;            
         const renderMenuItem = ({item, index}) => {
             
             const rightButton = [

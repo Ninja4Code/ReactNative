@@ -7,7 +7,7 @@ import About from './AboutComponent';
 import Reservation from './ReservationComponent';
 import Favorites from './FavoriteComponent';
 import { Icon } from 'react-native-elements';
-import { View, Image,ScrollView, Text } from 'react-native';
+import { View, Image,ScrollView, Text, StyleSheet } from 'react-native';
 import { createStackNavigator,createDrawerNavigator, DrawerItems, SafeAreaView  } from 'react-navigation';
 
 const FavoritesNavigator = createStackNavigator({
@@ -227,4 +227,27 @@ export const MainNavigator = createDrawerNavigator({
  {
    drawerBackgroundColor: '#D1C4E9',
    contentComponent: CustomDrawerContentComponent
+});
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  drawerHeader: {
+    backgroundColor: '#512DA8',
+    height: 140,
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 1,
+    flexDirection: 'row'
+  },
+  drawerHeaderText: {
+    color: 'white',
+    fontSize: 24,
+    fontWeight: 'bold'
+  },
+  drawerImage: {
+    margin: 10,
+    width: 80,
+    height: 60
+  }
 });

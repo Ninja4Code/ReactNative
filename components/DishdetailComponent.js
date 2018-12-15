@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, ScrollView, FlatList, Modal, Button, StyleSheet, Alert, PanResponder } from 'react-native';
-import { Card, Icon, Input, Rating } from 'react-native-elements';
+import { Card, Icon, FormInput, Rating } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { baseUrl } from '../shared/baseUrl';
 import { postFavorite, postComment } from '../redux/ActionCreators';
@@ -181,12 +181,12 @@ class DishDetail extends Component {
                             style={{ paddingVertical: 10 }}
                             onFinishRating={ this.handleRating }
                         />
-                        <Input
+                        <FormInput
                             placeholder="Author"
                             leftIcon={{ type: 'font-awesome', name: 'user-o' }}
                             onChangeText={ author => this.setState({ author: author })}
                         />
-                        <Input
+                        <FormInput
                             placeholder="Comment"
                             leftIcon={{ type: 'font-awesome', name: 'comment-o' }}
                             onChangeText={ comment => this.setState({ comment: comment })}

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Button, StyleSheet } from 'react-native';
-import { Card, Icon, Input, CheckBox } from 'react-native-elements';
+import { Card, Icon, FormInput, CheckBox } from 'react-native-elements';
 import { SecureStore } from 'expo';
 // should be using v1.0.0-beta for react-native-elements
 
@@ -46,14 +46,14 @@ class Login extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Input
+                <FormInput
                     placeholder="Username"
                     leftIcon={{ type: 'font-awesome', name: 'user-o' }}
                     onChangeText={(username) => this.setState({username})}
                     value={this.state.username}
                     containerStyle={styles.formInput}
                     />
-                <Input
+                <FormInput
                     placeholder="Password"
                     leftIcon={{ type: 'font-awesome', name: 'key' }}
                     onChangeText={(password) => this.setState({password})}

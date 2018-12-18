@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, Picker, Switch, Button, Alert} from 'react-native';
+import { Text, View, StyleSheet, Picker, ScrollView, Switch, Button, Alert} from 'react-native';
 import DatePicker from 'react-native-datepicker';
 import * as Animatable from 'react-native-animatable';
 import { Permissions, Notifications } from 'expo';
@@ -76,6 +76,7 @@ class Reservation extends Component {
     render() {
         return(
             <Animatable.View animation="zoomIn" duration={2000} delay={1000}>
+              <ScrollView>
                 <View style={styles.formRow}>
                     <Text style={styles.formLabel}>Number of Guests</Text>
                     <Picker
@@ -131,7 +132,8 @@ class Reservation extends Component {
                         color="#512DA8"
                         accessibilityLabel="Learn more about this purple button"
                     />
-                </View>                
+                </View> 
+                </ScrollView>               
             </Animatable.View>
         );
     }

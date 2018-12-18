@@ -46,6 +46,7 @@ class Login extends Component {
     render() {
         return (
             <View style={styles.container}>
+                {/* <Icon name="search" type="font-awesome" style={{marginLeft: 10}} size={20} color="#000"/> */}
                 <FormInput
                     placeholder="Username"
                     leftIcon={{ type: 'font-awesome', name: 'user-o' }}

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Button, StyleSheet, Text, ScrollView, Image } from 'react-native';
 import { Card, Icon, FormInput, CheckBox } from 'react-native-elements';
-import { SecureStore, Permissions, ImagePicker  } from 'expo';
+import { SecureStore, Camera, Permissions, ImagePicker, Asset, ImageManipulator  } from 'expo';
 import { createBottomTabNavigator } from 'react-navigation';
 import { baseUrl } from '../shared/baseUrl';
 // should be using v1.0.0-beta for react-native-elements
@@ -114,6 +114,18 @@ class RegisterTab extends Component {
             imageUrl: baseUrl + 'images/logo.png'
         }
     }
+    processImage = async (imageUri) => {
+        let processedImage = await ImageManipulator.manipulate(
+            imageUri, 
+            [
+                {resize: {width: 400}}
+            ],
+            {format: 'png'}
+        );
+        console.log(processedImage);
+        this.setState({imageUrl: processedImage.uri });
+
+    }
     getImageFromCamera = async () => {
         const cameraPermission = await Permissions.askAsync(Permissions.CAMERA);
         const cameraRollPermission = await Permissions.askAsync(Permissions.CAMERA_ROLL);
@@ -123,12 +135,12 @@ class RegisterTab extends Component {
                 allowsEditing: true,
                 aspect: [4, 3],
             });
-
             if (!capturedImage.cancelled) {
                 console.log(capturedImage);
-                this.setState({imageUrl: capturedImage.uri });
+                this.processImage(capturedImage.uri);
             }
         }
+
     }
     static navigationOptions = {
         title: 'Register',

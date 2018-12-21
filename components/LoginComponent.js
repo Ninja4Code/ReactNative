@@ -47,7 +47,6 @@ class LoginTab extends Component {
         else
             SecureStore.deleteItemAsync('userinfo')
                 .catch((error) => console.log('Could not delete user info', error));
-
     }
     render() {
         return (
@@ -85,7 +84,6 @@ class LoginTab extends Component {
                                     size={24}
                                     color= 'blue'
                                 />
-
                             }
                             titleStyle={{
                                 color: "blue"
@@ -127,9 +125,8 @@ class RegisterTab extends Component {
           allowsEditing: true,
           aspect: [4, 3],
         });    
-        console.log(result);    
         if (!result.cancelled) {
-          this.setState({ imageUri: result.uri });
+          this.processImage(result.uri);
         }
     }
     getImageFromCamera = async () => {

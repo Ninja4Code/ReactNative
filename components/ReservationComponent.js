@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Text, View, StyleSheet, Picker, ScrollView, Switch, Button, Alert} from 'react-native';
 import DatePicker from 'react-native-datepicker';
 import * as Animatable from 'react-native-animatable';
-import { Permissions, Notifications } from 'expo';
+import { Permissions, Notifications, Calendar } from 'expo';
 
 class Reservation extends Component {
 
@@ -14,7 +14,20 @@ class Reservation extends Component {
             smoking: false,
             date: ''
         }
-    }   
+    } 
+    async addReservationToCalendar(date) {        
+        await this.obtainCalendarPermission();
+        const calendarEvent = await Expo.Calendar.createEventAsync(Expo.Calendar.DEFAULT, {
+            //var d = Date.parse("March 21, 2012") + (2*60*60*1000);
+            "endDate": "2018-12-13T07:44:24.088-05:00",
+            "startDate": "2018-12-13T08:00:24.496-05:00",
+           // "startDate": Date(Date.parse(date)),
+           // "endDate": Date(Date.parse(date + (2*60*60*1000))),
+            "title": "Con Fusion Table Reservation",
+            "timezone": "Asia/Hong_Kong",
+            "location": "121, Clear Water Bay Road, Clear Water Bay, Kowloon, Hong Kong"
+        })       
+    } 
     handleReservation() {
        //console.log(JSON.stringify(this.state));       
        Alert.alert(
@@ -30,12 +43,23 @@ class Reservation extends Component {
                     text: 'OK',
                     onPress: () => {
                         this.presentLocalNotification(this.state.date);
+                        this.addReservationToCalendar(this.state.date);
                         this.resetForm()
                     }
                 }
             ],
             { cancelable: false }
         );
+    }
+    async obtainCalendarPermission() {
+        let permission = await Permissions.getAsync(Permissions.CALENDAR);
+        if (permission.status !== 'granted') {
+            permission = await Permissions.askAsync(Permissions.CALENDAR);
+            if (permission.status !== 'granted') {
+                Alert.alert('Permission not granted to show notifications');
+            }
+        }
+        return permission;
     }
     async obtainNotificationPermission() {
         let permission = await Permissions.getAsync(Permissions.USER_FACING_NOTIFICATIONS);

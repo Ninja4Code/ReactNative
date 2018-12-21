@@ -17,7 +17,6 @@ class LoginTab extends Component {
             remember: false
         }
     }
-
     componentDidMount() {
         SecureStore.getItemAsync('userinfo')
             .then((userdata) => {
@@ -50,7 +49,6 @@ class LoginTab extends Component {
                 .catch((error) => console.log('Could not delete user info', error));
 
     }
-
     render() {
         return (
             <View style={styles.container}>
@@ -97,7 +95,6 @@ class LoginTab extends Component {
             </View>
         );
     }
-
 }
 class RegisterTab extends Component {
 
@@ -111,7 +108,7 @@ class RegisterTab extends Component {
             lastname: '',
             email: '',
             remember: false,
-            imageUrl: baseUrl + 'images/logo.png'
+            imageUrl: baseUrl + 'logo.png'
         }
     }
     processImage = async (imageUri) => {
@@ -124,7 +121,16 @@ class RegisterTab extends Component {
         );
         console.log(processedImage);
         this.setState({imageUrl: processedImage.uri });
-
+    }
+    getImageFromGallery = async () => {
+        let result = await ImagePicker.launchImageLibraryAsync({
+          allowsEditing: true,
+          aspect: [4, 3],
+        });    
+        console.log(result);    
+        if (!result.cancelled) {
+          this.setState({ imageUri: result.uri });
+        }
     }
     getImageFromCamera = async () => {
         const cameraPermission = await Permissions.askAsync(Permissions.CAMERA);
@@ -140,7 +146,6 @@ class RegisterTab extends Component {
                 this.processImage(capturedImage.uri);
             }
         }
-
     }
     static navigationOptions = {
         title: 'Register',
@@ -159,8 +164,6 @@ class RegisterTab extends Component {
             SecureStore.setItemAsync('userinfo', JSON.stringify({username: this.state.username, password: this.state.password}))
                 .catch((error) => console.log('Could not save user info', error));
     }
-    
-
     render() {
         return(
             <ScrollView>
@@ -170,30 +173,30 @@ class RegisterTab extends Component {
                         source={{uri: this.state.imageUrl}} 
                         loadingIndicatorSource={require('./images/logo.png')}
                         style={styles.image} 
-                        />
-
+                    />
                     <Button
                         title="Camera"
                         onPress={this.getImageFromCamera}
-                        />
-                </View>
-                
+                    />
+                    <Button
+                        title="Gallery"
+                        onPress={this.getImageFromGallery}
+                    />
+                </View>                
                 <FormInput
                     placeholder="Username"
                     leftIcon={{ type: 'font-awesome', name: 'user-o' }}
                     onChangeText={(username) => this.setState({username})}
                     value={this.state.username}
                     containerStyle={styles.formInput}
-                    />
-                
+                    />                
                 <FormInput
                     placeholder="Password"
                     leftIcon={{ type: 'font-awesome', name: 'key' }}
                     onChangeText={(password) => this.setState({password})}
                     value={this.state.password}
                     containerStyle={styles.formInput}
-                    />
-                
+                    />                
                 <FormInput
                     placeholder="First Name"
                     leftIcon={{ type: 'font-awesome', name: 'user-o' }}
@@ -201,7 +204,6 @@ class RegisterTab extends Component {
                     value={this.state.firstname}
                     containerStyle={styles.formInput}
                     />
-
                 <FormInput
                     placeholder="Last Name"
                     leftIcon={{ type: 'font-awesome', name: 'user-o' }}
@@ -209,7 +211,6 @@ class RegisterTab extends Component {
                     value={this.state.lastname}
                     containerStyle={styles.formInput}
                     />
-
                 <FormInput
                     placeholder="Email"
                     leftIcon={{ type: 'font-awesome', name: 'envelope-o' }}
@@ -217,14 +218,12 @@ class RegisterTab extends Component {
                     value={this.state.email}
                     containerStyle={styles.formInput}
                     />
-
                 <CheckBox title="Remember Me"
                     center
                     checked={this.state.remember}
                     onPress={() => this.setState({remember: !this.state.remember})}
                     containerStyle={styles.formCheckbox}
                     />
-
                 <View style={styles.formButton}>
                     <Button
                         onPress={() => this.handleRegister()}
@@ -237,7 +236,6 @@ class RegisterTab extends Component {
                                 color= 'white'
                             />
                         }
-
                         buttonStyle={{
                             backgroundColor: "#512DA8"
                         }}
@@ -248,10 +246,6 @@ class RegisterTab extends Component {
         );
     }
 }
-
-
-
-
 const styles = StyleSheet.create({
     container: {
         justifyContent: 'center',
@@ -260,14 +254,14 @@ const styles = StyleSheet.create({
     imageContainer: {
         flex: 1,
         flexDirection: 'row',
-        margin: 20
+        margin: 20,
+        justifyContent:'space-around'
     },
     image: {
       margin: 10,
       width: 80,
       height: 60
     },
-
     formInput: {
         margin: 20
     },
@@ -290,5 +284,4 @@ const Login = createBottomTabNavigator({
         inactiveTintColor: 'gray'
     }
 });
-
 export default Login;

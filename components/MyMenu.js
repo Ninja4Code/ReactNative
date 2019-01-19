@@ -7,7 +7,8 @@ import About from './AboutComponent';
 import Reservation from './ReservationComponent';
 import Favorites from './FavoriteComponent';
 import Login from './LoginComponent';
-import { Icon } from 'react-native-elements';
+//import { Icon } from 'react-native-elements';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import { View, Image,ScrollView, Text, StyleSheet } from 'react-native';
 import { createStackNavigator,createDrawerNavigator, DrawerItems, SafeAreaView  } from 'react-navigation';
 

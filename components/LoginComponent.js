@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Button, StyleSheet, Text, ScrollView, Image } from 'react-native';
-import { Card, Icon, FormInput, CheckBox } from 'react-native-elements';
+import { Card,  FormInput, CheckBox } from 'react-native-elements';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import { SecureStore, Camera, Permissions, ImagePicker, Asset, ImageManipulator  } from 'expo';
 import { createBottomTabNavigator } from 'react-navigation';
 import { baseUrl } from '../shared/baseUrl';

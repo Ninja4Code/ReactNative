@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import {Text,View, ScrollView } from 'react-native';
-import { Card, Button, Icon } from 'react-native-elements';
+import { Card, Button} from 'react-native-elements';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import * as Animatable from 'react-native-animatable';
 import { MailComposer } from 'expo';
 
